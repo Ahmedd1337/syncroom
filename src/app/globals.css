@@ -2957,12 +2957,57 @@ select:focus {
   flex-shrink: 0;
 }
 @media (min-width: 901px) and (max-height: 800px) {
-  .sidebar { padding-top: 18px; }
-  .sidebar-brand { margin-bottom: 12px; }
-  .workspace-switch, .sidebar-search { margin-bottom: 12px; }
-  .nav-section-title { margin-top: 16px; }
-  .channel-nav { min-height: 158px; }
-  .sidebar-bottom { padding-top: 4px; }
-  .workspace-actions { margin-bottom: 4px; }
-  .user-footer { margin-top: 8px; padding-top: 12px; padding-bottom: 12px; }
+  .sidebar {
+    padding-top: 18px;
+  }
+  .sidebar-brand {
+    margin-bottom: 12px;
+  }
+  .workspace-switch,
+  .sidebar-search {
+    margin-bottom: 12px;
+  }
+  .nav-section-title {
+    margin-top: 16px;
+  }
+  .channel-nav {
+    min-height: 158px;
+  }
+  .sidebar-bottom {
+    padding-top: 4px;
+  }
+  .workspace-actions {
+    margin-bottom: 4px;
+  }
+  .user-footer {
+    margin-top: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+.attachment img {
+  height: auto;
+}
+@media (min-width: 901px) and (max-height: 800px) {
+  .sidebar .main-nav button,
+  .sidebar .channel-nav button,
+  .sidebar .settings-link {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  .sidebar .channel-nav {
+    min-height: 136px;
+  }
+  .sidebar .workspace-actions button {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  .sidebar .add-channel {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .sidebar .user-footer {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
 }
