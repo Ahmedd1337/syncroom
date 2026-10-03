@@ -35,7 +35,7 @@ export function Avatar({
       className={`avatar ${small ? "avatar-small" : ""}`}
       style={
         {
-          "--avatar-hue": `${(name.charCodeAt(0) * 31) % 360}`,
+          "--avatar-hue": `${Array.from(name).reduce((hash, char) => (hash * 31 + char.charCodeAt(0)) % 360, 0)}`,
         } as React.CSSProperties
       }
     >

@@ -2804,3 +2804,165 @@ select:focus {
     scroll-behavior: auto !important;
   }
 }
+/* Quiet brand details shared by the workspace surfaces. */
+.app-root {
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+.app-root .brand {
+  letter-spacing: -0.8px;
+}
+.app-root .brand-mark {
+  box-shadow:
+    0 2px 5px #414bb324,
+    inset 0 1px 0 #ffffff30;
+}
+.app-root .avatar {
+  border: 1px solid hsl(var(--avatar-hue, 230) 30% 78%);
+  box-shadow: inset 0 1px 0 #ffffff60;
+  letter-spacing: 0.2px;
+}
+[data-theme="dark"] .app-root .avatar {
+  background: hsl(var(--avatar-hue, 230) 23% 25%);
+  color: hsl(var(--avatar-hue, 230) 50% 83%);
+  border-color: hsl(var(--avatar-hue, 230) 22% 37%);
+  box-shadow: inset 0 1px 0 #ffffff08;
+}
+.main-nav .selected,
+.channel-nav .selected,
+.settings-link.selected {
+  box-shadow: inset 3px 0 var(--accent);
+}
+.main-nav .selected:hover,
+.channel-nav .selected:hover,
+.settings-link.selected:hover {
+  background: var(--accent-soft);
+}
+.app-root .channel-symbol {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 18%, var(--line));
+}
+.app-root .nav-section-title {
+  font-weight: 700;
+  letter-spacing: 1.35px;
+}
+.app-root .workspace-logo {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: var(--line);
+}
+.workspace-switch:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.sidebar-search:hover,
+.member-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.message {
+  transition: background-color 140ms ease;
+}
+.message-byline b {
+  letter-spacing: -0.12px;
+}
+.message-byline time {
+  font-variant-numeric: tabular-nums;
+}
+.message-tools {
+  transition:
+    opacity 120ms ease,
+    box-shadow 120ms ease;
+}
+.message:focus-within {
+  background: var(--surface);
+}
+.mention {
+  font-weight: 600;
+  border-radius: 4px;
+}
+.reply-reference {
+  background: var(--surface);
+  border-radius: 0 5px 5px 0;
+  max-width: 600px;
+}
+.reactions button {
+  font-weight: 600;
+  min-height: 25px;
+  border-radius: 7px;
+}
+.reactions button:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.reactions button[aria-pressed="true"] {
+  border-color: var(--accent);
+}
+.attachment {
+  border-radius: 9px;
+  background: var(--card);
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+.attachment:hover,
+.attachment:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 3px 12px #30396c0d;
+}
+.attachment-label {
+  background: var(--surface);
+}
+.attachment-label svg {
+  color: var(--accent);
+}
+.composer {
+  border-color: var(--line);
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+.app-root .btn:active:not(:disabled),
+.app-root .icon-button:active:not(:disabled),
+.reactions button:active {
+  transform: translateY(1px);
+}
+.segmented button.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  box-shadow: 0 1px 3px #30396c10;
+}
+.task-card h3 {
+  font-weight: 600;
+}
+[data-theme="dark"] .app-root .btn-primary {
+  color: #171b35;
+}
+@media (prefers-reduced-motion: reduce) {
+  .app-root *,
+  .app-root *::before,
+  .app-root *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+  .app-root .btn:active:not(:disabled),
+  .app-root .icon-button:active:not(:disabled),
+  .reactions button:active {
+    transform: none;
+  }
+}
+.channel-nav button {
+  flex-shrink: 0;
+}
+@media (min-width: 901px) and (max-height: 800px) {
+  .sidebar { padding-top: 18px; }
+  .sidebar-brand { margin-bottom: 12px; }
+  .workspace-switch, .sidebar-search { margin-bottom: 12px; }
+  .nav-section-title { margin-top: 16px; }
+  .channel-nav { min-height: 158px; }
+  .sidebar-bottom { padding-top: 4px; }
+  .workspace-actions { margin-bottom: 4px; }
+  .user-footer { margin-top: 8px; padding-top: 12px; padding-bottom: 12px; }
+}

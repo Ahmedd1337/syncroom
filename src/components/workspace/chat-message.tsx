@@ -161,7 +161,10 @@ function MessageText({ text }: { text: string }) {
   );
 }
 function FileAttachment({ attachment: a }: { attachment: Attachment }) {
-  const { url, error } = useAsset(a.path);
+  const localPreview = a.path === "/demo/onboarding-review.svg";
+  const asset = useAsset(localPreview ? null : a.path);
+  const url = localPreview ? a.path : asset.url;
+  const error = asset.error;
   return (
     <div className="attachment">
       {a.mime_type.startsWith("image/") && url && (
