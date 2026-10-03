@@ -1,0 +1,201 @@
+import type { Snapshot, Profile } from "./types";
+const alex: Profile = {
+  id: "demo-alex",
+  full_name: "Alex Morgan",
+  username: "alex",
+  avatar_url: null,
+  job_title: "Product designer",
+  bio: "Making room for thoughtful products.",
+  status: "Available",
+};
+const maya: Profile = {
+  ...alex,
+  id: "demo-maya",
+  full_name: "Maya Chen",
+  username: "maya",
+  job_title: "Design lead",
+};
+const jordan: Profile = {
+  ...alex,
+  id: "demo-jordan",
+  full_name: "Jordan Lee",
+  username: "jordan",
+  job_title: "Frontend engineer",
+};
+const sam: Profile = {
+  ...alex,
+  id: "demo-sam",
+  full_name: "Sam Rivera",
+  username: "sam",
+  job_title: "Product manager",
+  status: "In a meeting",
+};
+const date = (h: number, m = 0) =>
+  `2026-10-03T${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:00Z`;
+export function demoSnapshot(): Snapshot {
+  return {
+    profile: alex,
+    workspaces: [
+      {
+        id: "demo-studio",
+        name: "Studio North",
+        slug: "studio-north",
+        logo_url: null,
+        created_by: alex.id,
+      },
+    ],
+    members: [alex, maya, jordan, sam].map((profile) => ({
+      workspace_id: "demo-studio",
+      user_id: profile.id,
+      role: profile.id === alex.id ? "owner" : "member",
+      profile,
+    })),
+    channels: [
+      ["general", "The whole team, in one room."],
+      [
+        "product-design",
+        "A space for explorations, feedback, and the details that matter.",
+      ],
+      [
+        "development",
+        "Build notes, code reviews, and technical conversations.",
+      ],
+      ["random", "A little room for everything else."],
+    ].map(([name, description]) => ({
+      id: `demo-${name}`,
+      workspace_id: "demo-studio",
+      name,
+      description,
+      created_by: alex.id,
+    })),
+    messages: [
+      {
+        id: "m1",
+        channel_id: "demo-product-design",
+        user_id: maya.id,
+        profile: maya,
+        body: "Good morning, team! ☀️\nI’ve been exploring a calmer onboarding experience. The goal is to get people to their first conversation with as little friction as possible.",
+        reply_to: null,
+        created_at: date(9, 41),
+        updated_at: date(9, 41),
+        reactions: [
+          { message_id: "m1", user_id: alex.id, emoji: "❤️" },
+          { message_id: "m1", user_id: jordan.id, emoji: "❤️" },
+        ],
+        attachments: [],
+      },
+      {
+        id: "m2",
+        channel_id: "demo-product-design",
+        user_id: jordan.id,
+        profile: jordan,
+        body: "Love that. The workspace setup currently asks for a lot up front. We could let people invite their team after they’ve had a chance to look around.",
+        reply_to: null,
+        created_at: date(9, 44),
+        updated_at: date(9, 44),
+        reactions: [],
+        attachments: [],
+      },
+      {
+        id: "m3",
+        channel_id: "demo-product-design",
+        user_id: maya.id,
+        profile: maya,
+        body: "Exactly what I was thinking. Here’s the direction:\n\n01 — Create your space\n02 — Start a conversation\n03 — Bring your people in\n\nSmall steps, clear purpose. @alex would love your thoughts on the copy.",
+        reply_to: null,
+        created_at: date(9, 46),
+        updated_at: date(9, 46),
+        reactions: [{ message_id: "m3", user_id: jordan.id, emoji: "🎉" }],
+        attachments: [],
+      },
+      {
+        id: "m4",
+        channel_id: "demo-product-design",
+        user_id: alex.id,
+        profile: alex,
+        body: "This feels right. Let’s make the first screen feel like an invitation, not a form. I’ll put together a few options for our review.",
+        reply_to: "m3",
+        created_at: date(9, 52),
+        updated_at: date(9, 52),
+        reactions: [{ message_id: "m4", user_id: maya.id, emoji: "👍" }],
+        attachments: [],
+      },
+      {
+        id: "m5",
+        channel_id: "demo-general",
+        user_id: sam.id,
+        profile: sam,
+        body: "Welcome to Studio North. This is our space to share updates, ask questions, and keep the whole team in the loop.",
+        reply_to: null,
+        created_at: date(8, 30),
+        updated_at: date(8, 30),
+        reactions: [],
+        attachments: [],
+      },
+    ],
+    tasks: [
+      {
+        id: "t1",
+        title: "Explore a simpler onboarding flow",
+        description:
+          "Reduce the initial setup to the essentials. Review the first conversation experience.",
+        status: "progress",
+        priority: "high",
+        assignee_id: maya.id,
+        due_date: "2026-10-08",
+      },
+      {
+        id: "t2",
+        title: "Write workspace welcome copy",
+        description: "Warm, short, and useful. Draft three directions.",
+        status: "todo",
+        priority: "medium",
+        assignee_id: alex.id,
+        due_date: "2026-10-06",
+      },
+      {
+        id: "t3",
+        title: "Review keyboard navigation",
+        description: "Check focus order in the channel list and composer.",
+        status: "review",
+        priority: "high",
+        assignee_id: jordan.id,
+        due_date: "2026-10-07",
+      },
+      {
+        id: "t4",
+        title: "Document our design principles",
+        description: "A shared reference for future decisions.",
+        status: "backlog",
+        priority: "low",
+        assignee_id: sam.id,
+        due_date: null,
+      },
+      {
+        id: "t5",
+        title: "Define the workspace color palette",
+        description: "Light and dark themes with accessible contrast.",
+        status: "done",
+        priority: "medium",
+        assignee_id: maya.id,
+        due_date: null,
+      },
+    ].map((t) => ({
+      ...t,
+      workspace_id: "demo-studio",
+      created_by: alex.id,
+      created_at: date(8),
+    })) as Snapshot["tasks"],
+    notifications: [
+      {
+        id: "n1",
+        user_id: alex.id,
+        workspace_id: "demo-studio",
+        title: "Maya mentioned you in #product-design",
+        message_id: "m3",
+        read_at: null,
+        created_at: date(9, 46),
+      },
+    ],
+  };
+}
